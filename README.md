@@ -1,5 +1,9 @@
 # Perimeter and Area Calculator
 
+
+![image](https://github.com/Hendrizzzz/CS122-Midterms-GroupProject2/assets/139997209/c8acdabb-46c7-4d46-93b6-4051db42ae46)
+
+
 ## Overview
 This Java application efficiently calculates the perimeter and area of squares, rectangles, triangles, and circles.
 
