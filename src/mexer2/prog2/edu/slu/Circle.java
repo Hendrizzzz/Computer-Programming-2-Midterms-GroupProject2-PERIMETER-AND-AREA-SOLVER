@@ -1,5 +1,8 @@
 package mexer2.prog2.edu.slu;
 
+/**
+ * A reference class
+ */
 public class Circle extends Shape {
     private final double radius;
     public Circle(String name, double radius) {
