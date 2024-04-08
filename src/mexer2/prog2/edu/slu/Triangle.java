@@ -1,3 +1,4 @@
+//WAZZAP MY NIGGAH
 package mexer2.prog2.edu.slu;
 
 public class Triangle extends Shape{
