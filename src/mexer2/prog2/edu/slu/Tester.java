@@ -366,6 +366,14 @@ public class Tester extends JFrame {
     }
 
 
+
+
+
+
+
+
+
+    
     private class ActionHandler implements ActionListener{
 
         @Override
@@ -405,6 +413,9 @@ public class Tester extends JFrame {
 
         } // end of method -> actionPerformed
 
+
+
+        
         private void showTriangle(boolean isArea) {
             figureCardLayout.show(figureCardPanel, "triangle");
             answerCardLayout.show(answerCardPanel, "triangleAnswer");
@@ -420,6 +431,9 @@ public class Tester extends JFrame {
             }
         } // end of method -> showTriangle
 
+
+
+        
         private void showCircle(boolean isArea) {
             figureCardLayout.show(figureCardPanel, "circle");
             answerCardLayout.show(answerCardPanel, "circleAnswer");
@@ -436,6 +450,8 @@ public class Tester extends JFrame {
             }
         } // end of method -> showCircle
 
+
+        
         private void showSquare(boolean isArea) {
             figureCardLayout.show(figureCardPanel, "square");
             answerCardLayout.show(answerCardPanel, "squareAnswer");
@@ -452,6 +468,9 @@ public class Tester extends JFrame {
             }
         } // end of method -> showSquare
 
+
+
+        
         private void showRectangle(boolean isArea) {
             figureCardLayout.show(figureCardPanel, "rectangle");
             answerCardLayout.show(answerCardPanel, "rectangleAnswer");
@@ -468,6 +487,9 @@ public class Tester extends JFrame {
             }
         } // end of method -> showRectangle
 
+
+
+        
         private void clearTextFields() {
             side.setText("");
             length.setText("");
@@ -482,6 +504,11 @@ public class Tester extends JFrame {
             circleAnswerJTextfield.setText("");
         } // end of method -> clearTextFields
 
+
+
+
+
+        
         private void performCalculation(String selectedPolygon, boolean isArea) {
             switch (selectedPolygon) {
                 case "Triangle" -> calculateTriangle(isArea);
@@ -491,6 +518,12 @@ public class Tester extends JFrame {
             }
         } // end of method -> performCalculations
 
+
+
+
+
+
+        
         private void calculateTriangle(boolean isArea) {
             double a = Double.parseDouble(side2.getText());
             double b = Double.parseDouble(side3.getText());
@@ -504,6 +537,12 @@ public class Tester extends JFrame {
             }
         } // end of method -> calculateTriangle
 
+
+
+
+
+
+        
         private void calculateSquare(boolean isArea) {
             double a = Double.parseDouble(side.getText());
             Shape shape = new Square("square", a);
@@ -514,6 +553,11 @@ public class Tester extends JFrame {
             }
         } // end of method -> calculateSquare
 
+
+
+
+
+        
         private void calculateCircle(boolean isArea) {
             double r = Double.parseDouble(radius.getText());
             Shape shape = new Circle("circle", r);
@@ -524,6 +568,11 @@ public class Tester extends JFrame {
             }
         } // end of method -> calculateCircle
 
+
+
+
+
+        
         private void calculateRectangle(boolean isArea) {
             double a = Double.parseDouble(length.getText());
             double b = Double.parseDouble(width.getText());
