@@ -55,7 +55,7 @@ public class Tester extends JFrame {
     public Tester(){
         setTitle("Bag-eoMalasanMartinPajaraSambotYu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         setTitlePanel();
         setOptionsPanel();
         setDashboardPanel();
@@ -87,7 +87,7 @@ public class Tester extends JFrame {
 
         // Create and configure the description label
         JLabel descriptionLabel = new JLabel("The app efficiently calculates the perimeter and area " +
-                                            "of squares, triangles, rectangles, and circles.");
+                "of squares, triangles, rectangles, and circles.");
         descriptionLabel.setVerticalAlignment(JLabel.TOP);
         descriptionLabel.setHorizontalAlignment(JLabel.CENTER);
         descriptionLabel.setFont(new Font("Arial", Font.BOLD, 15));
@@ -129,7 +129,7 @@ public class Tester extends JFrame {
 
 
 
-        /**
+    /**
      * Sets up the dashboard panel with graphical representations of geometric shapes
      * and input fields for user input and displaying calculation results.
      * @author Bag-eo, Jim Hendrix
@@ -336,7 +336,7 @@ public class Tester extends JFrame {
         rectangleAnswer.add(panel1);
         rectangleAnswer.add(new JLabel());
         rectangleAnswer.add(panel2);
-        
+
     }
 
 
@@ -457,7 +457,7 @@ public class Tester extends JFrame {
         calculate = new JButton("Calculate");
         clear = new JButton("Clear");
         exit = new JButton("Exit");
-        
+
         ActionHandler actionHandler = new ActionHandler();
         calculate.addActionListener(actionHandler);
         clear.addActionListener(actionHandler);
@@ -572,7 +572,7 @@ public class Tester extends JFrame {
             if (isArea){
                 formula.setText("");
                 triangleAreaOrPerimeterLabel.setText("Area : ");
-                triangleAnswerJTextfield.setText(""); 
+                triangleAnswerJTextfield.setText("");
                 triangleUnitsLabel.setText("units²");
             } else { //Display perimeter card panel
                 formula.setText("Perimeter : a + b + c");
@@ -636,7 +636,12 @@ public class Tester extends JFrame {
 
 
 
-        
+
+        /**
+         * Displays the rectangle section in the UI based on whether to show the area or perimeter.
+         *
+         * @param isArea a boolean value indicating whether to display the area (true) or perimeter (false)
+         */
         private void showRectangle(boolean isArea) {
             figureCardLayout.show(figureCardPanel, "rectangle");
             answerCardLayout.show(answerCardPanel, "rectangleAnswer");
@@ -655,7 +660,11 @@ public class Tester extends JFrame {
 
 
 
-        
+        /**
+         * Clears the text fields used for input and output in the UI.
+         *
+         * @author Martin, Michael John
+         */
         private void clearTextFields() {
             side.setText("");
             length.setText("");
@@ -674,7 +683,7 @@ public class Tester extends JFrame {
 
 
 
-        
+
         private void performCalculation(String selectedPolygon, boolean isArea) {
             switch (selectedPolygon) {
                 case "Triangle" -> calculateTriangle(isArea);
@@ -742,7 +751,7 @@ public class Tester extends JFrame {
             }
         } // end of method -> calculateSquare
 
-        
+
         /**
          * Calculates the required field of the circle, depending on the boolean provided.
          * If isArea is true, the area of the circle is calculated.
@@ -768,6 +777,13 @@ public class Tester extends JFrame {
 
 
 
+        /**
+         * Calculates either the area or perimeter of a rectangle based on the provided parameters.
+         *
+         * @param isArea a boolean value indicating whether to calculate the area (true) or perimeter (false)
+         *
+         * @author Pajara, Paul Jabez
+         */
         private void calculateRectangle(boolean isArea) {
             double a = Double.parseDouble(length.getText());
             double b = Double.parseDouble(width.getText());
@@ -782,5 +798,3 @@ public class Tester extends JFrame {
     } // end of the inner class -> ActionHandler
 
 } // end of the outer class -> Tester
-
-
