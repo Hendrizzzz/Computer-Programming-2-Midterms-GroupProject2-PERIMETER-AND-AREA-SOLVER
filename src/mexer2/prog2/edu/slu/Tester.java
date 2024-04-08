@@ -538,13 +538,22 @@ public class Tester extends JFrame {
 
 
 
-
-
-        
+        /**
+         * Calculates either the area or perimeter of a Triangle based on the choice of the user in the dropdown.
+         * If isArea is true, calculates and displays the area of the triangle. If it's false then it will calculates and displays the perimeter of the triangle
+         *
+         * @param isArea indicates whether it should calculate the area or the perimeter of the triangle.
+         *
+         * @author Edison Malasan
+         */
         private void calculateTriangle(boolean isArea) {
+
+            //Parse the input side Lengths of the Triangle
             double a = Double.parseDouble(side2.getText());
             double b = Double.parseDouble(side3.getText());
             double c = Double.parseDouble(side4.getText());
+
+            // Create a Triangle object
             Shape shape = new Triangle("triangle", a, b, c);
 
             if (isArea) {
@@ -553,8 +562,6 @@ public class Tester extends JFrame {
                 triangleAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
             }
         } // end of method -> calculateTriangle
-
-
 
 
 
