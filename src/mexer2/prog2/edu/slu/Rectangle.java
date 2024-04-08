@@ -1,5 +1,6 @@
 package mexer2.prog2.edu.slu;
 
+// put your name here
 public class Rectangle extends Square{
     private final double side2;
     public Rectangle(String name, double side1, double side2) {
