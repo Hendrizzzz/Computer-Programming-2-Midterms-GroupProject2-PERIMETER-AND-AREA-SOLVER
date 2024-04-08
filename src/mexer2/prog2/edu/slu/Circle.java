@@ -2,6 +2,7 @@ package mexer2.prog2.edu.slu;
 
 /**
  * A reference class for creating a circle.
+ * @documentation Oliver
  */
 public class Circle extends Shape {
     private final double radius;
