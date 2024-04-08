@@ -1,13 +1,9 @@
-
-Below is the Javadoc documentation for the provided Square class:
-
-java
-Copy code
 package mexer2.prog2.edu.slu;
 
 /**
  * The Square class represents a square shape, extending the Shape class.
  * It calculates the area and perimeter of the square.
+ * @author Sambot, Archiller Zinichi Kyle
  */
 public class Square extends Shape {
     /**
