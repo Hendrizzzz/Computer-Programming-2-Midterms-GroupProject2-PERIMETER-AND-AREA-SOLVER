@@ -366,150 +366,177 @@ public class Tester extends JFrame {
     }
 
 
-    class ActionHandler implements ActionListener{
+    private class ActionHandler implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Object buttonChoice = e.getSource();
-            String selectedPolygon = (String) polygonMenu.getSelectedItem();
-            boolean isArea = (areaOrPerimeter.getSelectedItem()).equals("Area");
+            Object buttonChoice = e.getSource(); // holder for the button Action
+            String selectedPolygon = (String) polygonMenu.getSelectedItem(); // holder for the selected polygon on the polygon dropdown
+            boolean isArea = (areaOrPerimeter.getSelectedItem()).equals("Area"); // whether if the selected choice in the dropdown is area or perimeter, if area then true, false otherwise.
 
-
+            // show the right card panels according to the selected in the dropdowns
             switch (Objects.requireNonNull(selectedPolygon)){
                 case "Triangle" -> {
-                    figureCardLayout.show(figureCardPanel, "triangle");
-                    answerCardLayout.show(answerCardPanel, "triangleAnswer");
-                    if (isArea){
-                        formula.setText("");
-                        triangleAnswerJTextfield.setText("");
-                        triangleUnitsLabel.setText("units²");
-                    } else {
-                        formula.setText("Perimeter : a + b + c");
-                        triangleAreaOrPerimeterLabel.setText("Perimeter : ");
-                        triangleUnitsLabel.setText("units");
-                        triangleAnswerJTextfield.setText("");
-                    }
+                    showTriangle(isArea);
                 }
                 case "Circle" -> {
-                    figureCardLayout.show(figureCardPanel, "circle");
-                    answerCardLayout.show(answerCardPanel, "circleAnswer");
-                    if (isArea){
-                        formula.setText("Area : πr²");
-                        circleAreaOrPerimeterLabel.setText("Area : ");
-                        circleUnitsLabel.setText("units²");
-                        circleAnswerJTextfield.setText("");
-                    } else {
-                        formula.setText("Perimeter : 2πr");
-                        circleAreaOrPerimeterLabel.setText("Perimeter : ");
-                        circleUnitsLabel.setText("units");
-                        circleAnswerJTextfield.setText("");
-                    }
+                    showCircle(isArea);
                 }
                 case "Square" -> {
-                    figureCardLayout.show(figureCardPanel, "square");
-                    answerCardLayout.show(answerCardPanel, "squareAnswer");
-                    if (isArea){
-                        formula.setText("Area : a²");
-                        circleAreaOrPerimeterLabel.setText("Area : ");
-                        squareUnitsLabel.setText("units²");
-                        squareAnswerJTextfield.setText("");
-                    } else {
-                        formula.setText("Perimeter : 4a");
-                        circleAreaOrPerimeterLabel.setText("Perimeter : ");
-                        squareUnitsLabel.setText("units");
-                        squareAnswerJTextfield.setText("");
-                    }
+                    showSquare(isArea);
                 }
                 case "Rectangle" -> {
-                    figureCardLayout.show(figureCardPanel, "rectangle");
-                    answerCardLayout.show(answerCardPanel, "rectangleAnswer");
-                    if (isArea) {
-                        formula.setText("Area : a * b");
-                        rectangleAreaOrPerimeterLabel.setText("Area : ");
-                        rectangleUnitsLabel.setText("units²");
-                        rectangleAnswerJTextfield.setText("");
-                    } else {
-                        formula.setText("Perimeter : 2a + 2b");
-                        rectangleAreaOrPerimeterLabel.setText("Perimeter : ");
-                        rectangleUnitsLabel.setText("units");
-                        rectangleAnswerJTextfield.setText("");
-                    }
+                    showRectangle(isArea);
                 }
             }
 
-
+            // Button handlers
             if (buttonChoice != clear || buttonChoice != exit || buttonChoice != calculate){
                 if (buttonChoice == clear){
-                    side.setText("");
-                    length.setText("");
-                    width.setText("");
-                    radius.setText("");
-                    side2.setText("");
-                    side3.setText("");
-                    side4.setText("");
-                    squareAnswerJTextfield.setText("");
-                    triangleAnswerJTextfield.setText("");
-                    rectangleAnswerJTextfield.setText("");
-                    circleAnswerJTextfield.setText("");
+                    clearTextFields();
                 }
                 else if (buttonChoice == exit){
                     System.exit(0);
                 }
                 else if (buttonChoice == calculate){
-                    Shape shape;
-                    switch (selectedPolygon) {
-                        case "Triangle" -> {
-                            double a = Double.parseDouble(side2.getText());
-                            double b = Double.parseDouble(side3.getText());
-                            double c = Double.parseDouble(side4.getText());
-                            shape = new Triangle("triangle", a, b, c);
-
-                            if (isArea) {
-                                triangleAnswerJTextfield.setText(String.valueOf(shape.area()));
-                            } else {
-                                triangleAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
-                            }
-                        }
-                        case "Square" -> {
-                            double a = Double.parseDouble(side.getText());
-                            shape = new Square("square", a);
-                            if (isArea) {
-                                squareAnswerJTextfield.setText(String.valueOf(shape.area()));
-                            } else {
-                                squareAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
-                            }
-                        }
-                        case "Circle" -> {
-                            double r = Double.parseDouble(radius.getText());
-                            shape = new Circle("circle", r);
-                            if (isArea) {
-                                circleAnswerJTextfield.setText(String.valueOf(shape.area()));
-                            } else {
-                                circleAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
-                            }
-                        }
-                        default -> {
-                            double a = Double.parseDouble(length.getText());
-                            double b = Double.parseDouble(width.getText());
-                            shape = new Rectangle("rectangle", a, b);
-                            if (isArea) {
-                                rectangleAnswerJTextfield.setText(String.valueOf(shape.area()));
-                            } else {
-                                rectangleAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
-                            }
-                        }
-                    }
-
-
+                    performCalculation(selectedPolygon, isArea);
                 }
             }
 
-        }
-    }
+        } // end of method -> actionPerformed
 
-    
-    
+        private void showTriangle(boolean isArea) {
+            figureCardLayout.show(figureCardPanel, "triangle");
+            answerCardLayout.show(answerCardPanel, "triangleAnswer");
+            if (isArea){
+                formula.setText("");
+                triangleAnswerJTextfield.setText("");
+                triangleUnitsLabel.setText("units²");
+            } else {
+                formula.setText("Perimeter : a + b + c");
+                triangleAreaOrPerimeterLabel.setText("Perimeter : ");
+                triangleUnitsLabel.setText("units");
+                triangleAnswerJTextfield.setText("");
+            }
+        } // end of method -> showTriangle
 
-}
+        private void showCircle(boolean isArea) {
+            figureCardLayout.show(figureCardPanel, "circle");
+            answerCardLayout.show(answerCardPanel, "circleAnswer");
+            if (isArea){
+                formula.setText("Area : πr²");
+                circleAreaOrPerimeterLabel.setText("Area : ");
+                circleUnitsLabel.setText("units²");
+                circleAnswerJTextfield.setText("");
+            } else {
+                formula.setText("Perimeter : 2πr");
+                circleAreaOrPerimeterLabel.setText("Perimeter : ");
+                circleUnitsLabel.setText("units");
+                circleAnswerJTextfield.setText("");
+            }
+        } // end of method -> showCircle
+
+        private void showSquare(boolean isArea) {
+            figureCardLayout.show(figureCardPanel, "square");
+            answerCardLayout.show(answerCardPanel, "squareAnswer");
+            if (isArea){
+                formula.setText("Area : a²");
+                circleAreaOrPerimeterLabel.setText("Area : ");
+                squareUnitsLabel.setText("units²");
+                squareAnswerJTextfield.setText("");
+            } else {
+                formula.setText("Perimeter : 4a");
+                circleAreaOrPerimeterLabel.setText("Perimeter : ");
+                squareUnitsLabel.setText("units");
+                squareAnswerJTextfield.setText("");
+            }
+        } // end of method -> showSquare
+
+        private void showRectangle(boolean isArea) {
+            figureCardLayout.show(figureCardPanel, "rectangle");
+            answerCardLayout.show(answerCardPanel, "rectangleAnswer");
+            if (isArea) {
+                formula.setText("Area : a * b");
+                rectangleAreaOrPerimeterLabel.setText("Area : ");
+                rectangleUnitsLabel.setText("units²");
+                rectangleAnswerJTextfield.setText("");
+            } else {
+                formula.setText("Perimeter : 2a + 2b");
+                rectangleAreaOrPerimeterLabel.setText("Perimeter : ");
+                rectangleUnitsLabel.setText("units");
+                rectangleAnswerJTextfield.setText("");
+            }
+        } // end of method -> showRectangle
+
+        private void clearTextFields() {
+            side.setText("");
+            length.setText("");
+            width.setText("");
+            radius.setText("");
+            side2.setText("");
+            side3.setText("");
+            side4.setText("");
+            squareAnswerJTextfield.setText("");
+            triangleAnswerJTextfield.setText("");
+            rectangleAnswerJTextfield.setText("");
+            circleAnswerJTextfield.setText("");
+        } // end of method -> clearTextFields
+
+        private void performCalculation(String selectedPolygon, boolean isArea) {
+            switch (selectedPolygon) {
+                case "Triangle" -> calculateTriangle(isArea);
+                case "Square" -> calculateSquare(isArea);
+                case "Circle" -> calculateCircle(isArea);
+                case "Rectangle" -> calculateRectangle(isArea);
+            }
+        } // end of method -> performCalculations
+
+        private void calculateTriangle(boolean isArea) {
+            double a = Double.parseDouble(side2.getText());
+            double b = Double.parseDouble(side3.getText());
+            double c = Double.parseDouble(side4.getText());
+            Shape shape = new Triangle("triangle", a, b, c);
+
+            if (isArea) {
+                triangleAnswerJTextfield.setText(String.valueOf(shape.area()));
+            } else {
+                triangleAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
+            }
+        } // end of method -> calculateTriangle
+
+        private void calculateSquare(boolean isArea) {
+            double a = Double.parseDouble(side.getText());
+            Shape shape = new Square("square", a);
+            if (isArea) {
+                squareAnswerJTextfield.setText(String.valueOf(shape.area()));
+            } else {
+                squareAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
+            }
+        } // end of method -> calculateSquare
+
+        private void calculateCircle(boolean isArea) {
+            double r = Double.parseDouble(radius.getText());
+            Shape shape = new Circle("circle", r);
+            if (isArea) {
+                circleAnswerJTextfield.setText(String.valueOf(shape.area()));
+            } else {
+                circleAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
+            }
+        } // end of method -> calculateCircle
+
+        private void calculateRectangle(boolean isArea) {
+            double a = Double.parseDouble(length.getText());
+            double b = Double.parseDouble(width.getText());
+            Shape shape = new Rectangle("rectangle", a, b);
+            if (isArea) {
+                rectangleAnswerJTextfield.setText(String.valueOf(shape.area()));
+            } else {
+                rectangleAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
+            }
+        } // end of method -> calculateRectangle
+
+    } // end of the inner class -> ActionHandler
+
+} // end of the outer class -> Tester
 
 
