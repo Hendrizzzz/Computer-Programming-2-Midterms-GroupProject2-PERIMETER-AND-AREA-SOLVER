@@ -4,8 +4,7 @@ package mexer2.prog2.edu.slu;
  * A reference class for creating a circle.
  * Inherits values and attributes from the Shape class.
  *
- * @documentation Oliver Yu
- * @author
+ * @author Oliver Yu
  */
 public class Circle extends Shape {
 
