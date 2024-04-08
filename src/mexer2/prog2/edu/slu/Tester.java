@@ -438,7 +438,7 @@ public class Tester extends JFrame {
          *
          * @documentation Oliver Yu
          *
-         * @param isArea is true if the selected option in the dropdown is true. Otherwise, false
+         * @param isArea is true if the selected option in the dropdown is Area. Flase if selected is perimeter.
          */
         private void showCircle(boolean isArea) {
             figureCardLayout.show(figureCardPanel, "circle"); //displays the figureCardPanel, which is located on the left side of the user interface.
