@@ -431,12 +431,20 @@ public class Tester extends JFrame {
             }
         } // end of method -> showTriangle
 
-
-
-        
+        /**
+         * Displays the card panel for the circle perimeter and area calculation.
+         * If the isArea boolean is true, the panel will display the GUI for the calculation of the area of the circle.
+         * Otherwise, the panel will display the GUI for the calculation of the perimeter of the circle.
+         *
+         * @documentation Oliver Yu
+         *
+         * @param isArea is true if the selected option in the dropdown is true. Otherwise, false
+         */
         private void showCircle(boolean isArea) {
-            figureCardLayout.show(figureCardPanel, "circle");
-            answerCardLayout.show(answerCardPanel, "circleAnswer");
+            figureCardLayout.show(figureCardPanel, "circle"); //displays the figureCardPanel, which is located on the left side of the user interface.
+            answerCardLayout.show(answerCardPanel, "circleAnswer"); //displays the answerCardPanel, which is located on the right side of the user interface.
+
+            //if-else statement to identify which texts will be displayed.
             if (isArea){
                 formula.setText("Area : πr²");
                 circleAreaOrPerimeterLabel.setText("Area : ");
@@ -553,14 +561,20 @@ public class Tester extends JFrame {
             }
         } // end of method -> calculateSquare
 
-
-
-
-
-        
+        /**
+         * Calculates the required field of the circle, depending on the boolean provided.
+         * If isArea is true, the area of the circle is calculated.
+         * Otherwise, the perimeter of the circle is calculated.
+         *
+         * @documentation Oliver Yu
+         *
+         * @param isArea is true if the selected option in the dropdown is true. Otherwise, false
+         */
         private void calculateCircle(boolean isArea) {
-            double r = Double.parseDouble(radius.getText());
-            Shape shape = new Circle("circle", r);
+            double r = Double.parseDouble(radius.getText()); //value of r is extracted from the radius textField.
+            Shape shape = new Circle("circle", r); //instantiation of a new circle object with a parameter of "circle" as the name and r as the radius.
+
+            //if-else statement to identify which calculation will be used.
             if (isArea) {
                 circleAnswerJTextfield.setText(String.valueOf(shape.area()));
             } else {
@@ -572,7 +586,6 @@ public class Tester extends JFrame {
 
 
 
-        
         private void calculateRectangle(boolean isArea) {
             double a = Double.parseDouble(length.getText());
             double b = Double.parseDouble(width.getText());
