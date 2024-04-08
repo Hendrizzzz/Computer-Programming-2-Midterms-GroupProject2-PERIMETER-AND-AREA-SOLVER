@@ -574,19 +574,32 @@ private void showSquare(boolean isArea) {
             }
         } // end of method -> calculateTriangle
 
-
-
-
         
-        private void calculateSquare(boolean isArea) {
-            double a = Double.parseDouble(side.getText());
-            Shape shape = new Square("square", a);
-            if (isArea) {
-                squareAnswerJTextfield.setText(String.valueOf(shape.area()));
-            } else {
-                squareAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
-            }
-        } // end of method -> calculateSquare
+/**
+ * Calculates the area or perimeter of a square based on the provided side length and updates the answer field accordingly.
+ *
+ * This method retrieves the side length of the square from the text field {@code side}, creates a Square object with the given side length, and calculates either the area or perimeter based on the value of the {@code isArea} parameter. It then updates the text field {@code squareAnswerJTextfield} with the calculated result.
+ *
+ * @param isArea A boolean value indicating whether to calculate the area or perimeter of the square.
+ *               If {@code true}, the area of the square will be calculated; otherwise, the perimeter will be calculated.
+ */
+private void calculateSquare(boolean isArea) {
+    // Retrieve the side length of the square from the text field
+    double a = Double.parseDouble(side.getText());
+
+    // Create a Square object with the given side length
+    Shape shape = new Square("square", a);
+
+    // Calculate either the area or perimeter based on the specified parameter
+    if (isArea) {
+        // Calculate the area of the square and update the answer field
+        squareAnswerJTextfield.setText(String.valueOf(shape.area()));
+    } else {
+        // Calculate the perimeter of the square and update the answer field
+        squareAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
+    }
+} // end of method -> calculateSquare
+        
 
         /**
          * Calculates the required field of the circle, depending on the boolean provided.
