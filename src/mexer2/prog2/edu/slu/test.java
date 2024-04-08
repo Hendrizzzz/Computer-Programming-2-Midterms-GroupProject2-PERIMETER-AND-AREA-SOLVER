@@ -4,5 +4,10 @@ public class test {
     public static void main(String[] args) {
         Triangle triangle = new Triangle("jaha", 3,4,5);
         System.out.println(triangle.sides);
+
+
+
+        //mannnnnnn stoppppp lezzzgoooooooooooo
+        //yiooooooooooooooooooooooooooooo
     }
 }
