@@ -1,11 +1,12 @@
+package mexer2.prog2.edu.slu;
+
+
 /**
  * Reference class for Triangle.
  * Inherits the attributes from the Shape class.
  *
  * @author Edison Malasan
  */
-package mexer2.prog2.edu.slu;
-
 public class Triangle extends Shape{
 
     /**
