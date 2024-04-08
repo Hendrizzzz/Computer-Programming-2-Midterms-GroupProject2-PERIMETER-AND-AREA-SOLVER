@@ -469,22 +469,33 @@ public class Tester extends JFrame {
 
 
         
-        private void showSquare(boolean isArea) {
-            figureCardLayout.show(figureCardPanel, "square");
-            answerCardLayout.show(answerCardPanel, "squareAnswer");
-            if (isArea){
-                formula.setText("Area : a²");
-                circleAreaOrPerimeterLabel.setText("Area : ");
-                squareUnitsLabel.setText("units²");
-                squareAnswerJTextfield.setText("");
-            } else {
-                formula.setText("Perimeter : 4a");
-                circleAreaOrPerimeterLabel.setText("Perimeter : ");
-                squareUnitsLabel.setText("units");
-                squareAnswerJTextfield.setText("");
-            }
-        } // end of method -> showSquare
+/**
+ * Displays the square panel and corresponding answer panel while updating the displayed formula and labels based on the specified parameter.
+ *
+ * @param isArea A boolean value indicating whether to display information related to the area or perimeter of the square.
+ *               If {@code true}, information related to the area will be displayed; otherwise, information related to the perimeter will be displayed.
+ */
+private void showSquare(boolean isArea) {
+    // Show the square panel in the figure card layout
+    figureCardLayout.show(figureCardPanel, "square");
+    // Show the square answer panel in the answer card layout
+    answerCardLayout.show(answerCardPanel, "squareAnswer");
 
+    // Update the displayed formula and labels based on the specified parameter
+    if (isArea) {
+        // Set the formula and labels for calculating the area of the square
+        formula.setText("Area : a²");
+        circleAreaOrPerimeterLabel.setText("Area : ");
+        squareUnitsLabel.setText("units²");
+        squareAnswerJTextfield.setText("");
+    } else {
+        // Set the formula and labels for calculating the perimeter of the square
+        formula.setText("Perimeter : 4a");
+        circleAreaOrPerimeterLabel.setText("Perimeter : ");
+        squareUnitsLabel.setText("units");
+        squareAnswerJTextfield.setText("");
+    }
+} // end of method -> showSquare
 
 
         
