@@ -15,7 +15,7 @@ import java.util.Objects;
  * Tester class represents the main JFrame for the Perimeter and Area Calculator application.
  * It contains panels for title, options, dashboard, and buttons, along with various components
  * for user interaction and display.
- * @author: Bag-eo, Jim Hendrix
+ * @author Bag-eo, Jim Hendrix
  */
 public class Tester extends JFrame {
     private JPanel titlePanel;
@@ -50,7 +50,7 @@ public class Tester extends JFrame {
      * Constructs a Tester object.
      * Initializes the JFrame and sets up its components.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     public Tester(){
         setTitle("Bag-eoMalasanMartinPajaraSambotYu");
@@ -76,7 +76,7 @@ public class Tester extends JFrame {
 
     /**
      * Sets up the title panel with the application title and description.
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setTitlePanel() {
         // Create and configure the title label
@@ -101,7 +101,7 @@ public class Tester extends JFrame {
     /**
      * Sets up the options panel with dropdown menus for selecting the calculation type (area or perimeter)
      * and the geometric shape (square, rectangle, triangle, or circle).
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setOptionsPanel() {
         // Create 2 dropdown menus for selecting a calculation type and geometric shape
@@ -132,7 +132,7 @@ public class Tester extends JFrame {
         /**
      * Sets up the dashboard panel with graphical representations of geometric shapes
      * and input fields for user input and displaying calculation results.
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      *
      * <p>This DashboardPanel consists of two panels, each utilizing a CardLayout: one with four
      * panels containing shape images, and the other with two panels displaying input and calculation results.</p>
@@ -162,7 +162,7 @@ public class Tester extends JFrame {
      * Sets up the first panel of the dashboard with a CardLayout containing shape images.
      * @param panel1 The panel to set up.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setUpFirstPanelOfDashBoard(JPanel panel1) {
         // the first panel's CardLayout which contains images
@@ -214,7 +214,7 @@ public class Tester extends JFrame {
      * Sets up the second panel of the dashboard with a CardLayout containing calculation results.
      * @param panel2 The panel to set up.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setUpSecondPanelOfDashBoard(JPanel panel2) {
         // Create CardLayout panel for calculation results
@@ -249,7 +249,7 @@ public class Tester extends JFrame {
      *
      * @param squareAnswer The panel where the input fields and labels are added.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setSquare(JPanel squareAnswer) {
         // Input panel for side length
@@ -291,7 +291,7 @@ public class Tester extends JFrame {
      *
      * @param rectangleAnswer The panel where the input fields and labels are added.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setRectangle(JPanel rectangleAnswer) {
         // Input panel for length
@@ -345,7 +345,7 @@ public class Tester extends JFrame {
      *
      * @param circleAnswer The panel where the input fields and labels are added.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setCircleAnswer(JPanel circleAnswer) {
         // Input panel for radius
@@ -387,7 +387,7 @@ public class Tester extends JFrame {
      *
      * @param triangleAnswer The panel where the input fields and labels are added.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setTriangleAnswer(JPanel triangleAnswer) {
         // Input panel for side length 1
@@ -451,7 +451,7 @@ public class Tester extends JFrame {
     /**
      * Sets up the panel containing buttons for calculation and control.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setButtonPanel() {
         calculate = new JButton("Calculate");
@@ -475,7 +475,7 @@ public class Tester extends JFrame {
      *
      * @param textField The text field to attach the filter to.
      *
-     * @author: Bag-eo, Jim Hendrix
+     * @author Bag-eo, Jim Hendrix
      */
     private void setDigitsAndDotFilter(JTextField textField) {
         AbstractDocument doc = (AbstractDocument) textField.getDocument();
@@ -508,14 +508,14 @@ public class Tester extends JFrame {
      * Private class that handles actions for the GUI components
      * (dropdowns for showing the right panel in the CardLayout and Buttons).
      * Implements the ActionListener interface.
-     * <p>designed by: Bag-eo, Jim Hendrix</p>
+     * <p>designed by Bag-eo, Jim Hendrix</p>
      */
     private class ActionHandler implements ActionListener{
 
         /**
          * Invoked when an action occurs.
          * @param e The ActionEvent object representing the action.
-         * @author: Bag-eo, Jim Hendrix
+         * @author Bag-eo, Jim Hendrix
          */
         @Override
         public void actionPerformed(ActionEvent e) {
