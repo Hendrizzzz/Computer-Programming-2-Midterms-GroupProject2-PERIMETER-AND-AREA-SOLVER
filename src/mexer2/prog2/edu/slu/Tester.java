@@ -10,13 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-
-/**
- * Tester class represents the main JFrame for the Perimeter and Area Calculator application.
- * It contains panels for title, options, dashboard, and buttons, along with various components
- * for user interaction and display.
- * @author Bag-eo, Jim Hendrix
- */
 public class Tester extends JFrame {
     private JPanel titlePanel;
     private JPanel optionsPanel;
@@ -44,14 +37,6 @@ public class Tester extends JFrame {
     private static final Font font = new Font("Comic Sans MS", Font.BOLD, 30);
     private static final Font font1 = new Font("Verdana", Font.BOLD, 20);
 
-
-
-    /**
-     * Constructs a Tester object.
-     * Initializes the JFrame and sets up its components.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
     public Tester(){
         setTitle("Bag-eoMalasanMartinPajaraSambotYu");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,110 +58,62 @@ public class Tester extends JFrame {
         setEnabled(true);
     }
 
-
-    /**
-     * Sets up the title panel with the application title and description.
-     * @author Bag-eo, Jim Hendrix
-     */
     private void setTitlePanel() {
-        // Create and configure the title label
         JLabel titleLabel = new JLabel("Perimeter and Area Calculator");
         titleLabel.setVerticalAlignment(JLabel.TOP);
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
         titleLabel.setFont(new Font("Verdana", Font.BOLD, 30));
 
-        // Create and configure the description label
         JLabel descriptionLabel = new JLabel("The app efficiently calculates the perimeter and area " +
-                                            "of squares, triangles, rectangles, and circles.");
+                "of squares, triangles, rectangles, and circles.");
+
         descriptionLabel.setVerticalAlignment(JLabel.TOP);
         descriptionLabel.setHorizontalAlignment(JLabel.CENTER);
         descriptionLabel.setFont(new Font("Arial", Font.BOLD, 15));
 
-        // Create the title panel with a grid layout
         titlePanel = new JPanel(new GridLayout(2,1));
         titlePanel.add(titleLabel);
         titlePanel.add(descriptionLabel);
     }
 
-    /**
-     * Sets up the options panel with dropdown menus for selecting the calculation type (area or perimeter)
-     * and the geometric shape (square, rectangle, triangle, or circle).
-     * @author Bag-eo, Jim Hendrix
-     */
     private void setOptionsPanel() {
-        // Create 2 dropdown menus for selecting a calculation type and geometric shape
         String[] options = {"Area", "Perimeter"};
         String[] options2 = {"Square", "Rectangle", "Triangle", "Circle"};
         areaOrPerimeter = new JComboBox<>(options);
         polygonMenu = new JComboBox<>(options2);
 
-        // Action listener for dropdown menus
         ActionHandler polygonDropHandler = new ActionHandler();
+
         areaOrPerimeter.addActionListener(polygonDropHandler);
         polygonMenu.addActionListener(polygonDropHandler);
 
-        // Set preferred size and font for dropdown menus
+
         areaOrPerimeter.setPreferredSize(new Dimension(150, 40));
         areaOrPerimeter.setFont(font1);
+
         polygonMenu.setPreferredSize(new Dimension(150, 40));
         polygonMenu.setFont(font1);
 
-        // Add dropdown menus to the options panel
+
+
         optionsPanel = new JPanel();
         optionsPanel.add(areaOrPerimeter);
         optionsPanel.add(polygonMenu);
     }
 
-
-
-        /**
-     * Sets up the dashboard panel with graphical representations of geometric shapes
-     * and input fields for user input and displaying calculation results.
-     * @author Bag-eo, Jim Hendrix
-     *
-     * <p>This DashboardPanel consists of two panels, each utilizing a CardLayout: one with four
-     * panels containing shape images, and the other with two panels displaying input and calculation results.</p>
-     *
-     */
     private void setDashboardPanel() {
-        // The first panel
         JPanel panel1 = new JPanel(new BorderLayout());
 
-        // method for setting up the first panel
-        setUpFirstPanelOfDashBoard(panel1);
 
-        // the second panel
-        JPanel panel2 = new JPanel();
-
-        // method for setting up the second panel
-        setUpSecondPanelOfDashBoard(panel2);
-
-        // the 2 panels being added to the dashboard
-        dashboardPanel = new JPanel(new GridBagLayout());
-        dashboardPanel.add(panel1);
-        dashboardPanel.add(panel2);
-    }
-
-
-    /**
-     * Sets up the first panel of the dashboard with a CardLayout containing shape images.
-     * @param panel1 The panel to set up.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
-    private void setUpFirstPanelOfDashBoard(JPanel panel1) {
-        // the first panel's CardLayout which contains images
         figureCardPanel = new JPanel();
         figureCardLayout = new CardLayout();
         figureCardPanel.setLayout(figureCardLayout);
 
-        // panel container for the images
         JPanel squarePanel = new JPanel();
         JPanel rectanglePanel = new JPanel();
         JPanel circlePanel = new JPanel();
         JPanel trianglePanel = new JPanel();
 
-        // the images being placed on a JLabel because it cannot be added in a panel if they're on an ImageIcon
         ImageIcon square = new ImageIcon("pic-square.png");
         JLabel squareLabel = new JLabel(square); // Create a JLabel to hold the ImageIcon
         ImageIcon rectangle = new ImageIcon("pic-rectangle.png");
@@ -186,13 +123,11 @@ public class Tester extends JFrame {
         ImageIcon triangle = new ImageIcon("pic-triangle.png");
         JLabel triangleLabel = new JLabel(triangle); // Create a JLabel to hold the ImageIcon
 
-        // The images being added on their panels
         squarePanel.add(squareLabel);
         rectanglePanel.add(rectangleLabel);
         circlePanel.add(circleLabel);
         trianglePanel.add(triangleLabel);
 
-        // the 4 panels being added to the CardLayout
         figureCardPanel.add(squarePanel, "square");
         figureCardPanel.add(rectanglePanel, "rectangle");
         figureCardPanel.add(circlePanel, "circle");
@@ -202,27 +137,21 @@ public class Tester extends JFrame {
         formula.setHorizontalAlignment(SwingConstants.CENTER);
         formula.setFont(font);
 
-        // The CardLayout being added to the panel1
         panel1.add(figureCardPanel, BorderLayout.PAGE_START);
 
-        // Add formula to panel1 at the bottom
+        formula = new JLabel("Area : a²");
+        formula.setHorizontalAlignment(SwingConstants.CENTER);
+        formula.setFont(font);
+
+// Add formula to panel1 at the bottom
         panel1.add(formula, BorderLayout.PAGE_END);
-    }
 
+        JPanel panel2 = new JPanel();
 
-    /**
-     * Sets up the second panel of the dashboard with a CardLayout containing calculation results.
-     * @param panel2 The panel to set up.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
-    private void setUpSecondPanelOfDashBoard(JPanel panel2) {
-        // Create CardLayout panel for calculation results
         answerCardPanel = new JPanel();
         answerCardLayout = new CardLayout();
         answerCardPanel.setLayout(answerCardLayout);
 
-        // Panels for each shape's input and answer
         JPanel squareAnswer = new JPanel(new GridLayout(0,1));
         setSquare(squareAnswer);
         JPanel rectangleAnswer = new JPanel(new GridLayout(0,1));
@@ -232,27 +161,19 @@ public class Tester extends JFrame {
         JPanel triangleAnswer = new JPanel(new GridLayout(0,1));
         setTriangleAnswer(triangleAnswer);
 
-        // Add panels to CardLayout
         answerCardPanel.add(squareAnswer, "squareAnswer");
         answerCardPanel.add(rectangleAnswer, "rectangleAnswer");
         answerCardPanel.add(circleAnswer, "circleAnswer");
         answerCardPanel.add(triangleAnswer, "triangleAnswer");
 
-        // Add answer CardLayout panel to the second panel of the Dashboard
         panel2.add(answerCardPanel);
+
+        dashboardPanel = new JPanel(new GridBagLayout());
+        dashboardPanel.add(panel1);
+        dashboardPanel.add(panel2);
     }
 
-
-
-    /**
-     * Sets up the input fields and labels for calculating the area and perimeter of a square.
-     *
-     * @param squareAnswer The panel where the input fields and labels are added.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
     private void setSquare(JPanel squareAnswer) {
-        // Input panel for side length
         JPanel panel = new JPanel(new BorderLayout());
         side = new JTextField();
         setDigitsAndDotFilter(side);
@@ -264,7 +185,6 @@ public class Tester extends JFrame {
         panel.add(side, BorderLayout.CENTER);
         panel.add(rightLabel, BorderLayout.EAST);
 
-        // Result panel for square area
         JPanel panel1 = new JPanel(new BorderLayout());
         squareAnswerJTextfield = new JTextField();
         squareAnswerJTextfield.setPreferredSize(side.getPreferredSize()); // Set the preferred size for the squareAnswerJTextfield text field to match the side text field
@@ -277,7 +197,6 @@ public class Tester extends JFrame {
         panel1.add(squareAnswerJTextfield, BorderLayout.CENTER);
         panel1.add(squareUnitsLabel, BorderLayout.EAST);
 
-        // Adding panels to the squareAnswer panel
         squareAnswer.add(new JLabel());
         squareAnswer.add(panel);
         squareAnswer.add(new JLabel());
@@ -285,16 +204,7 @@ public class Tester extends JFrame {
     }
 
 
-
-    /**
-     * Sets up the input fields and labels for calculating the area and perimeter of a rectangle.
-     *
-     * @param rectangleAnswer The panel where the input fields and labels are added.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
     private void setRectangle(JPanel rectangleAnswer) {
-        // Input panel for length
         JPanel panel = new JPanel(new BorderLayout());
         length = new JTextField();
         setDigitsAndDotFilter(length);
@@ -305,8 +215,7 @@ public class Tester extends JFrame {
         panel.add(leftLabel, BorderLayout.WEST);
         panel.add(length, BorderLayout.CENTER);
         panel.add(rightLabel, BorderLayout.EAST);
-
-        // Input panel for width
+        
         JPanel panel1 = new JPanel(new BorderLayout());
         width = new JTextField();
         setDigitsAndDotFilter(width);
@@ -318,7 +227,6 @@ public class Tester extends JFrame {
         panel1.add(width, BorderLayout.CENTER);
         panel1.add(rightLabel1, BorderLayout.EAST);
 
-        // Result panel for rectangle area
         JPanel panel2 = new JPanel(new BorderLayout());
         rectangleAnswerJTextfield = new JTextField();
         rectangleAnswerJTextfield.setPreferredSize(length.getPreferredSize()); // Set the preferred size for the rectangleAnswerJTextfield text field to match the length text field
@@ -331,7 +239,6 @@ public class Tester extends JFrame {
         panel2.add(rectangleAnswerJTextfield, BorderLayout.CENTER);
         panel2.add(rectangleUnitsLabel, BorderLayout.EAST);
 
-        // Adding panels to the rectangleAnswer panel
         rectangleAnswer.add(panel);
         rectangleAnswer.add(panel1);
         rectangleAnswer.add(new JLabel());
@@ -339,16 +246,7 @@ public class Tester extends JFrame {
         
     }
 
-
-    /**
-     * Sets up the input fields and labels for calculating the area and perimeter of a circle.
-     *
-     * @param circleAnswer The panel where the input fields and labels are added.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
     private void setCircleAnswer(JPanel circleAnswer) {
-        // Input panel for radius
         JPanel panel = new JPanel(new BorderLayout());
         radius = new JTextField();
         setDigitsAndDotFilter(radius);
@@ -360,7 +258,6 @@ public class Tester extends JFrame {
         panel.add(radius, BorderLayout.CENTER);
         panel.add(rightLabel, BorderLayout.EAST);
 
-        // Result panel for circle area
         JPanel panel1 = new JPanel(new BorderLayout());
         circleAnswerJTextfield = new JTextField();
         circleAnswerJTextfield.setPreferredSize(radius.getPreferredSize()); // Set the preferred size for the circleAnswerJTextfield text field to match the radius text field
@@ -373,24 +270,13 @@ public class Tester extends JFrame {
         panel1.add(circleAnswerJTextfield, BorderLayout.CENTER);
         panel1.add(circleUnitsLabel, BorderLayout.EAST);
 
-        // Adding panels to the circleAnswer panel
         circleAnswer.add(new JLabel());
         circleAnswer.add(panel);
         circleAnswer.add(new JLabel());
         circleAnswer.add(panel1);
     }
 
-
-
-    /**
-     * Sets up the input fields and labels for calculating the area and perimeter of a triangle.
-     *
-     * @param triangleAnswer The panel where the input fields and labels are added.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
     private void setTriangleAnswer(JPanel triangleAnswer) {
-        // Input panel for side length 1
         JPanel panel = new JPanel(new BorderLayout());
         side2 = new JTextField();
         setDigitsAndDotFilter(side2);
@@ -402,7 +288,6 @@ public class Tester extends JFrame {
         panel.add(side2, BorderLayout.CENTER);
         panel.add(rightLabel, BorderLayout.EAST);
 
-        // Input panel for side length 2
         JPanel panel1 = new JPanel(new BorderLayout());
         side3 = new JTextField();
         setDigitsAndDotFilter(side3);
@@ -414,7 +299,6 @@ public class Tester extends JFrame {
         panel1.add(side3, BorderLayout.CENTER);
         panel1.add(rightLabel1, BorderLayout.EAST);
 
-        // Input panel for side length3
         JPanel panel2 = new JPanel(new BorderLayout());
         side4 = new JTextField();
         setDigitsAndDotFilter(side4);
@@ -426,7 +310,6 @@ public class Tester extends JFrame {
         panel2.add(side4, BorderLayout.CENTER);
         panel2.add(rightLabel2, BorderLayout.EAST);
 
-        // Result panel for triangle area
         JPanel panel3 = new JPanel(new BorderLayout());
         triangleAnswerJTextfield = new JTextField();
         triangleAnswerJTextfield.setPreferredSize(side2.getPreferredSize()); // Set the preferred size for the triangleAnswerJTextfield text field to match the side text field
@@ -439,7 +322,6 @@ public class Tester extends JFrame {
         panel3.add(triangleAnswerJTextfield, BorderLayout.CENTER);
         panel3.add(triangleUnitsLabel, BorderLayout.EAST);
 
-        // Adding panels to the triangleAnswer panel
         triangleAnswer.add(panel);
         triangleAnswer.add(panel1);
         triangleAnswer.add(panel2);
@@ -447,12 +329,6 @@ public class Tester extends JFrame {
         triangleAnswer.add(panel3);
     }
 
-
-    /**
-     * Sets up the panel containing buttons for calculation and control.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
     private void setButtonPanel() {
         calculate = new JButton("Calculate");
         clear = new JButton("Clear");
@@ -470,13 +346,7 @@ public class Tester extends JFrame {
     }
 
 
-    /**
-     * Attaches a document filter to a text field to accept only digits and a dot.
-     *
-     * @param textField The text field to attach the filter to.
-     *
-     * @author Bag-eo, Jim Hendrix
-     */
+    // Method to attach document filter to accept only digits and a dot
     private void setDigitsAndDotFilter(JTextField textField) {
         AbstractDocument doc = (AbstractDocument) textField.getDocument();
         doc.setDocumentFilter(new DocumentFilter() {
@@ -491,7 +361,6 @@ public class Tester extends JFrame {
     }
 
 
-    // the main method, launcher of the GUI program
     public static void main(String[] args) {
         new Tester();
     }
@@ -504,24 +373,14 @@ public class Tester extends JFrame {
 
 
 
-    /**
-     * Private class that handles actions for the GUI components
-     * (dropdowns for showing the right panel in the CardLayout and Buttons).
-     * Implements the ActionListener interface.
-     * <p>designed by Bag-eo, Jim Hendrix</p>
-     */
+    
     private class ActionHandler implements ActionListener{
 
-        /**
-         * Invoked when an action occurs.
-         * @param e The ActionEvent object representing the action.
-         * @author Bag-eo, Jim Hendrix
-         */
         @Override
         public void actionPerformed(ActionEvent e) {
-            Object buttonChoice = e.getSource(); // Get the source of the action (button clicked)
-            String selectedPolygon = (String) polygonMenu.getSelectedItem(); // Get the selected polygon from the dropdown menu
-            boolean isArea = (areaOrPerimeter.getSelectedItem()).equals("Area"); // determine whether if the selected choice in the dropdown is area or perimeter, if area then true, false otherwise.
+            Object buttonChoice = e.getSource(); // holder for the button Action
+            String selectedPolygon = (String) polygonMenu.getSelectedItem(); // holder for the selected polygon on the polygon dropdown
+            boolean isArea = (areaOrPerimeter.getSelectedItem()).equals("Area"); // whether if the selected choice in the dropdown is area or perimeter, if area then true, false otherwise.
 
             // show the right card panels according to the selected in the dropdowns
             switch (Objects.requireNonNull(selectedPolygon)){
@@ -570,8 +429,7 @@ public class Tester extends JFrame {
 
             // Statement that checks if area should be display
             if (isArea){
-                formula.setText("");
-                triangleAreaOrPerimeterLabel.setText("Area : ");
+                formula.setText(""); 
                 triangleAnswerJTextfield.setText(""); 
                 triangleUnitsLabel.setText("units²");
             } else { //Display perimeter card panel
@@ -610,25 +468,18 @@ public class Tester extends JFrame {
         } // end of method -> showCircle
 
 
-        /**
-         * Displays the square panel and corresponding answer panel while updating the displayed formula and labels based on the specified parameter.
-         *
-         * @param isArea A boolean value indicating whether to display information related to the area or perimeter of the square.
-         *               If {@code true}, information related to the area will be displayed; otherwise, information related to the perimeter will be displayed.
-         * @author: Sambot, Kyle Archilles
-         */
-
+        
         private void showSquare(boolean isArea) {
             figureCardLayout.show(figureCardPanel, "square");
             answerCardLayout.show(answerCardPanel, "squareAnswer");
             if (isArea){
                 formula.setText("Area : a²");
-                squareAreaOrPerimeterLabel.setText("Area : ");
+                circleAreaOrPerimeterLabel.setText("Area : ");
                 squareUnitsLabel.setText("units²");
                 squareAnswerJTextfield.setText("");
             } else {
                 formula.setText("Perimeter : 4a");
-                squareAreaOrPerimeterLabel.setText("Perimeter : ");
+                circleAreaOrPerimeterLabel.setText("Perimeter : ");
                 squareUnitsLabel.setText("units");
                 squareAnswerJTextfield.setText("");
             }
@@ -636,21 +487,35 @@ public class Tester extends JFrame {
 
 
 
-        
+
+        /**
+         * Displays the rectangle panel and its corresponding answer panel based on the specified parameter.
+         * If isArea is true, it shows the area panel; otherwise, it shows the perimeter panel.
+         *
+         * @param isArea a boolean indicating whether to display the area panel (true) or the perimeter panel (false)\
+         * @documentation Paul Pajara
+         */
         private void showRectangle(boolean isArea) {
+            // Show the rectangle panel
             figureCardLayout.show(figureCardPanel, "rectangle");
+            // Show the answer panel
             answerCardLayout.show(answerCardPanel, "rectangleAnswer");
+
+            // Set the formula and labels based on whether it's for area or perimeter
             if (isArea) {
+                // Set formula and labels for area
                 formula.setText("Area : a * b");
                 rectangleAreaOrPerimeterLabel.setText("Area : ");
                 rectangleUnitsLabel.setText("units²");
-                rectangleAnswerJTextfield.setText("");
             } else {
+                // Set formula and labels for perimeter
                 formula.setText("Perimeter : 2a + 2b");
                 rectangleAreaOrPerimeterLabel.setText("Perimeter : ");
                 rectangleUnitsLabel.setText("units");
-                rectangleAnswerJTextfield.setText("");
             }
+
+            // Clear the answer field
+            rectangleAnswerJTextfield.setText("");
         } // end of method -> showRectangle
 
 
@@ -715,34 +580,17 @@ public class Tester extends JFrame {
 
 
 
-
-        /**
-         * Calculates the area or perimeter of a square based on the provided side length and updates the answer field accordingly.
-         *
-         * This method retrieves the side length of the square from the text field {@code side}, creates a Square object with the given side length, and calculates either the area or perimeter based on the value of the {@code isArea} parameter. It then updates the text field {@code squareAnswerJTextfield} with the calculated result.
-         *
-         * @param isArea A boolean value indicating whether to calculate the area or perimeter of the square.
-         *               If {@code true}, the area of the square will be calculated; otherwise, the perimeter will be calculated.
-         * @author: Sambot, Kyle Archilles
-         */
+        
         private void calculateSquare(boolean isArea) {
-            // Retrieve the side length of the square from the text field
             double a = Double.parseDouble(side.getText());
-
-            // Create a Square object with the given side length
             Shape shape = new Square("square", a);
-
-            // Calculate either the area or perimeter based on the specified parameter
             if (isArea) {
-                // Calculate the area of the square and update the answer field
                 squareAnswerJTextfield.setText(String.valueOf(shape.area()));
             } else {
-                // Calculate the perimeter of the square and update the answer field
                 squareAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
             }
         } // end of method -> calculateSquare
 
-        
         /**
          * Calculates the required field of the circle, depending on the boolean provided.
          * If isArea is true, the area of the circle is calculated.
@@ -768,13 +616,26 @@ public class Tester extends JFrame {
 
 
 
+        /**
+         * Calculates either the area or perimeter of a rectangle based on the specified parameters.
+         *
+         * @param isArea a boolean indicating whether to calculate the area (true) or the perimeter (false)
+         * @documentation Paul Pajara
+         */
         private void calculateRectangle(boolean isArea) {
+            // Parse the length and width values from the text fields
             double a = Double.parseDouble(length.getText());
             double b = Double.parseDouble(width.getText());
+
+            // Create a Rectangle object with the specified dimensions
             Shape shape = new Rectangle("rectangle", a, b);
+
+            // Calculate and display the result based on whether it's for area or perimeter
             if (isArea) {
+                // Calculate and display the area
                 rectangleAnswerJTextfield.setText(String.valueOf(shape.area()));
             } else {
+                // Calculate and display the perimeter
                 rectangleAnswerJTextfield.setText(String.valueOf(shape.perimeter()));
             }
         } // end of method -> calculateRectangle
