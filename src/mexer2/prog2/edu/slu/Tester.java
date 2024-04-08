@@ -415,15 +415,24 @@ public class Tester extends JFrame {
 
 
 
-        
+        /**
+         * Display the panel for the Triangle perimeter and area calculation.
+         * If isArea is true, displays the card panel for area calculation of the Triangle. Otherwise, displays card panel for perimeter calculation of the Triangle.
+         *
+         * @param boolean isArea indicates wheter it should display area GUI or perimeter GUI.
+         *
+         * @author Edison Malasan
+         */
         private void showTriangle(boolean isArea) {
-            figureCardLayout.show(figureCardPanel, "triangle");
-            answerCardLayout.show(answerCardPanel, "triangleAnswer");
+            figureCardLayout.show(figureCardPanel, "triangle"); // display the figureCardPanel
+            answerCardLayout.show(answerCardPanel, "triangleAnswer"); // display the answerCardPanel
+
+            // Statement that checks if area should be display
             if (isArea){
-                formula.setText("");
-                triangleAnswerJTextfield.setText("");
+                formula.setText(""); 
+                triangleAnswerJTextfield.setText(""); 
                 triangleUnitsLabel.setText("units²");
-            } else {
+            } else { //Display perimeter card panel
                 formula.setText("Perimeter : a + b + c");
                 triangleAreaOrPerimeterLabel.setText("Perimeter : ");
                 triangleUnitsLabel.setText("units");
