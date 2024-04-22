@@ -39,6 +39,12 @@ This Java application efficiently calculates the perimeter and area of squares, 
 - **Triangle**: A concrete class representing a triangle, extending the `Shape` class.
 - **Circle**: A concrete class representing a circle, extending the `Shape` class.
 
-## Contributions
-Contributions are welcome! Feel free to fork the repository, make changes, and submit pull requests.
+## Contributors
+- **Jim Hendrix Bag-eo**
+- **Edison Malasan**
+- **Oliver Yu**
+- **Paul Pajara**
+- **Archilles Kyle Sambot**
+- **Martin Michael**
+
 
